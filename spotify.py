@@ -5,6 +5,8 @@ import sys
 import pymysql
 import logging
 
+logging.info('commit test')
+
 try :
     conn = pymysql.connect(host ='localhost' , user = 'root' , password ='gaion00' , db = 'spotify')
     cursor = conn.cursor()
