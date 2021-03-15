@@ -64,7 +64,7 @@ def main():
     #             )
     #             insert_row(cursor, artist, 'artists')
     #     except:
-    #         logging.error('something worng')
+    #         logging.error('something worngR')
     #         continue
     #
     # conn.commit()
@@ -199,6 +199,7 @@ def insert_row(cursor, data, table):
     placeholders = ', '.join(['%s'] * len(data))
     columns = ', '.join(data.keys())
     key_placeholders = ', '.join(['{0}=%s'.format(k) for k in data.keys()])
+
     sql = "INSERT INTO %s ( %s ) VALUES ( %s ) ON DUPLICATE KEY UPDATE %s" % (table, columns, placeholders, key_placeholders)
     cursor.execute(sql, list(data.values())*2)
 
