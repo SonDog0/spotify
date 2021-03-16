@@ -22,10 +22,6 @@ password = "gaion00"
 
 
 
-
-# S3 import
-
-
 def main():
 
     try:
@@ -67,20 +63,22 @@ def main():
                 top_track.update({'artist_id' : id})
                 top_tracks.append(top_track)
 
+    # track_ids
+    track_ids = [i['id'][0] for i in top_tracks]
+
     top_tracks = pd.DataFrame(top_tracks)
     top_tracks.to_parquet('top-tracks.parquet' , engine='pyarrow' , compression='snappy')
 
 
     dt = datetime.utcnow().strftime("%Y-%m-%d")
 
-    s3 = boto3.resource('s3')
-    object = s3.Object('son-spotify-artists' , 'dt={}/top-tracks.parquet'.format(dt))
+    s3 = boto3.resource('s3', aws_access_key_id='AKIAXEKX6UHRN42URIJ6',
+         aws_secret_access_key= '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')
+    object = s3.Object('son-spotify-artist' , 'dt={}/top-tracks.parquet'.format(dt))
     data = open('top-tracks.parquet' , 'rb')
     object.put(Body=data)
 
-    # S3 import 
-
-
+    # S3 import
 
 
 

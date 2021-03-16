@@ -119,9 +119,10 @@ password = "gaion00"
 
 def main():
 
-
     try:
-        dynamodb = boto3.resource('dynamodb', region_name='ap-northeast-2', endpoint_url='http://dynamodb.ap-northeast-2.amazonaws.com')
+        dynamodb = boto3.resource('dynamodb', region_name='ap-northeast-2', endpoint_url='http://dynamodb.ap-northeast-2.amazonaws.com', aws_access_key_id='AKIAXEKX6UHRN42URIJ6',
+         aws_secret_access_key= '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')
+
     except:
         logging.error('could not connect to dynamodb')
         sys.exit(1)
