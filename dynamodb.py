@@ -106,6 +106,9 @@ import json
 import logging
 import pymysql
 
+with open("config") as f:
+   config = json.load(f)
+
 
 client_id = "74cbd487458843f1ad3f5fa1e914c02f"
 client_secret = "752e4ed11062473f9da9076c4499d51b"
@@ -120,8 +123,7 @@ password = "gaion00"
 def main():
 
     try:
-        dynamodb = boto3.resource('dynamodb', region_name='ap-northeast-2', endpoint_url='http://dynamodb.ap-northeast-2.amazonaws.com', aws_access_key_id='AKIAXEKX6UHRN42URIJ6',
-         aws_secret_access_key= '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')
+        dynamodb = boto3.resource('dynamodb', region_name='ap-northeast-2', endpoint_url='http://dynamodb.ap-northeast-2.amazonaws.com', aws_access_key_id=config['aws_access_key_id'], aws_secret_access_key= config['aws_secret_access_key'])
 
     except:
         logging.error('could not connect to dynamodb')

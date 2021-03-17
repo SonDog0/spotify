@@ -10,6 +10,11 @@ from datetime import datetime
 import pandas as pd
 import jsonpath
 import pyarrow
+import json
+
+with open("config") as f:
+   config = json.load(f)
+
 
 client_id = "74cbd487458843f1ad3f5fa1e914c02f"
 client_secret = "752e4ed11062473f9da9076c4499d51b"
@@ -23,6 +28,7 @@ password = "gaion00"
 
 
 def main():
+
 
     try:
         conn = pymysql.connect(host, user=username, passwd=password, db=database, port=port, use_unicode=True, charset='utf8')
@@ -72,8 +78,7 @@ def main():
 
     dt = datetime.utcnow().strftime("%Y-%m-%d")
 
-    s3 = boto3.resource('s3', aws_access_key_id='AKIAXEKX6UHRN42URIJ6',
-         aws_secret_access_key= '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')
+    s3 = boto3.resource('s3', aws_access_key_id=config['aws_access_key_id'], aws_secret_access_key= config['aws_secret_access_key'])
     object = s3.Object('son-spotify-artist' , 'dt={}/top-tracks.parquet'.format(dt))
     data = open('top-tracks.parquet' , 'rb')
     object.put(Body=data)
