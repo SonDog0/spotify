@@ -9,14 +9,14 @@
 # import pymysql
 #
 #
-# client_id = "74cbd487458843f1ad3f5fa1e914c02f"
-# client_secret = "752e4ed11062473f9da9076c4499d51b"
+# client_id = ""
+# client_secret = ""
 #
 # host = "localhost"
 # port = 3306
 # username = "root"
 # database = "spotify"
-# password = "gaion00"
+# password = "pwd"
 #
 #
 #
@@ -110,14 +110,14 @@ with open("config") as f:
    config = json.load(f)
 
 
-client_id = "74cbd487458843f1ad3f5fa1e914c02f"
-client_secret = "752e4ed11062473f9da9076c4499d51b"
+client_id = ""
+client_secret = ""
 
 host = "localhost"
 port = 3306
 username = "root"
 database = "spotify"
-password = "gaion00"
+password = "pwd"
 
 
 def main():
